@@ -44,8 +44,16 @@ public class TicTacToeGame {
             computer = 'X';
 
         }
-        userMove();
 
+
+    }
+    public static void tossGame(){
+        if(Math.random()<0.5){
+            System.out.println("user");
+        }else
+        {
+            System.out.println("computer");
+        }
     }
 
 
@@ -53,6 +61,7 @@ public class TicTacToeGame {
 
 
     public static void main(String[] args){
+        tossGame();
         assign(board);
         createUser();
 
