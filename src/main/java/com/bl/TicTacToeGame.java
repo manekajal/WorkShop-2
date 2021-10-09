@@ -1,46 +1,66 @@
 package com.bl;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToeGame {
-    static String user;
-    static String computer;
+
+    static char user;
+    static char computer;
     static char[] board = new char[10];
+    char userMark;
+    char computerMark;
 
-    static public char[] assign() {
+    static public void assign(char[] board) {
 
 
-        for (int i = 0; i < board.length; i++) {
-            board[i] = ' ';
+        for (int i = 1; i < board.length-1; i++) {
+
+            board [i]  = ' ';
 
         }
-        return board;
+        System.out.println();
+
 
     }
+
+
+
     static public void createUser() {
-        Scanner scan =new Scanner(System.in);
-        System.out.println(" Please choose between X or O :");
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println(" Enter X or O :");
-        String user= scan.nextLine();
+       System.out.println( " Select Your Marker (O or X): ");
+        char user=scan.next().charAt(0);
 
 
-        if(user.equals("X")){
+        if (user == 'X')
+        {
 
-            computer="O";
-            user="X";
-        }else{
-            user="X";
-            computer="O";
+            computer = 'O';
+
+
+        } else {
+
+            computer = 'X';
 
         }
+        userMove();
+
     }
+
+
+
+
 
     public static void main(String[] args){
-          assign();
-          createUser();
+        assign(board);
+        createUser();
+
 
         System.out.println(user);
         System.out.println(computer);
+
     }
+
+
 }
