@@ -47,6 +47,14 @@ public class TicTacToeGame {
 
 
     }
+    public static void showBoard(char[] board){
+
+        System.out.println("---------------");
+        System.out.println(  TicTacToeGame.board[1]+ "|"+ TicTacToeGame.board[2]+ "|"+ TicTacToeGame.board[3]);
+        System.out.println( TicTacToeGame.board[4]+ "|"+ TicTacToeGame.board[5]+"|"+ TicTacToeGame.board[6]);
+        System.out.println( TicTacToeGame.board[7]+ "|"+ TicTacToeGame.board[8]+"|"+ TicTacToeGame.board[9]);
+
+    }
     public static void tossGame(){
         if(Math.random()<0.5){
             System.out.println("user");
@@ -55,8 +63,34 @@ public class TicTacToeGame {
             System.out.println("computer");
         }
     }
+    public static void playGame() {
+        Scanner scan = new Scanner(System.in);
 
+        char input;
+        for(int i=1;i< board.length-1;i++)
+        {
+            System.out.print(user+" Turn: ");
+            input=scan.next().charAt(0);
+            replace(board,input,user);
+            assign(board);
+            System.out.print(computer+" Turn: ");
+            input=scan.next().charAt(0);
+            replace(board,input,computer);
+            assign(board);
+            showBoard(board);
 
+        }
+
+    }
+    private static void replace(char[] arr, char find, char replace) {
+
+        for(int i=1; i<board.length;i++){
+            if(arr[i]== find){
+                arr[i]=replace;
+                return;
+            }
+        }
+    }
 
 
 
@@ -64,6 +98,7 @@ public class TicTacToeGame {
         tossGame();
         assign(board);
         createUser();
+      playGame();
 
 
         System.out.println(user);
