@@ -91,14 +91,49 @@ public class TicTacToeGame {
             }
         }
     }
+    public static boolean checkForWin() {
+        return (checkForRow() || checkForColomn() || checkForDiagnol());
+    }
+
+
+
+    public static boolean checkForRow() {
+        for(int i=1; i< board.length; i++)
+        {
+            if(check(board[i],board[i], board[i])==true)
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean checkForColomn() {
+        for(int i=1; i< board.length; i++)
+        {
+            if(check(board[i],board[i], board[i])==true)
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean checkForDiagnol()
+    {
+        return ( (check(board[1], board[2], board[3])) || (check (board[1],board[2], board[3])==true));
+    }
+
+    public static boolean check(char c1, char c2, char c3)
+    {
+        return((c1==c2) && (c2==c3));
+    }
+
 
 
 
     public static void main(String[] args){
         tossGame();
-        assign(board);
+
         createUser();
       playGame();
+      checkForWin();
 
 
         System.out.println(user);
